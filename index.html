@@ -1,12 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pragati & Aadith's Wedding</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pragati & Aadith | Our Wedding</title>
+
+  <!-- ====== CONFIGURATION ======
+       Update these values for your event
+  ============================ -->
+  <script>
+    // Asset folder (no trailing slash)
+    const ASSETS_PATH       = 'assets';
+    const HERO_IMAGE        = `${ASSETS_PATH}/2D3BAF22-AC09-46B5-AAE1-114635304072_1_105_c.jpeg`;
+    // Restored original gallery images
+    const GALLERY_IMAGES    = [
+      `${ASSETS_PATH}/2D3BAF22-AC09-46B5-AAE1-114635304072_1_105_c.jpeg`,
+      `${ASSETS_PATH}/2D3BAF22-AC09-46B5-AAE1-114635304072_1_105_c.jpeg`,
+      `${ASSETS_PATH}/2D3BAF22-AC09-46B5-AAE1-114635304072_1_105_c.jpeg`,
+      `${ASSETS_PATH}/2D3BAF22-AC09-46B5-AAE1-114635304072_1_105_c.jpeg`
+    ];
+
+    // Event details
+    const EVENT_DATE        = 'October 11, 2025';
+    const CEREMONY_TIME     = '11:00 AM';
+    const CEREMONY_VENUE    = { name: 'Tustin Ranch', address: '12442 Tustin Ranch Rd, Tustin, CA 92782' };
+    const RECEPTION_TIME    = '2:00 PM';
+    const RECEPTION_VENUE   = { name: 'Tustin Ranch', address: '12442 Tustin Ranch Rd, Tustin, CA 92782' };
+
+    // RSVP
+    const FORMSPREE_ID      = 'your-form-id';
+
+    // Google Maps Embed API
+    const MAP_API_KEY       = 'YOUR_API_KEY';
+    const MAP_QUERY         = '12442 Tustin Ranch Rd, Tustin, CA 92782';
+    const MAP_EMBED_URL     = `https://www.google.com/maps/embed/v1/place?key=${MAP_API_KEY}&q=${encodeURIComponent(MAP_QUERY)}`;
+
+    // Registry URL
+    const REGISTRY_URL      = 'https://link-to-your-registry.com';
+
+    function applyBackgrounds() {
+      const bg = getComputedStyle(document.documentElement).getPropertyValue('--bg-light').trim();
+      document.body.style.background = bg;
+      document.querySelectorAll('section').forEach(sec => sec.style.background = bg);
+    }
+
+    function injectContent() {
+      // Hero
+      const hero = document.querySelector('.hero');
+      hero.style.backgroundImage = `url('${HERO_IMAGE}')`;
+      document.querySelector('.hero .lead').textContent = EVENT_DATE;
+
+      // Details cards
+      const details = document.querySelectorAll('#details .card-text');
+      details[0].textContent = `${CEREMONY_TIME} at ${CEREMONY_VENUE.name}\n${CEREMONY_VENUE.address}`;
+      details[1].textContent = `${RECEPTION_TIME} at ${RECEPTION_VENUE.name}\n${RECEPTION_VENUE.address}`;
+
+      // RSVP form
+      document.getElementById('rsvp-form').action = `https://formspree.io/f/${FORMSPREE_ID}`;
+
+      // Map
+      document.querySelector('#travel iframe').src = MAP_EMBED_URL;
+
+      // Gallery carousel
+      const carouselInner = document.querySelector('#storyCarousel .carousel-inner');
+      GALLERY_IMAGES.forEach((src, i) => {
+        const item = document.createElement('div');
+        item.className = 'carousel-item' + (i === 0 ? ' active' : '');
+        item.innerHTML = `<img src="${src}" class="d-block w-100" alt="Slide ${i+1}">`;
+        carouselInner.appendChild(item);
+      });
+
+      // Registry link
+      document.getElementById('registry-link').href = REGISTRY_URL;
+
+      // Form validation
+      document.querySelectorAll('.needs-validation').forEach(form => {
+        form.addEventListener('submit', e => {
+          if (!form.checkValidity()) {
+            e.preventDefault(); e.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      applyBackgrounds();
+      injectContent();
+    });
+  </script>
+  <!-- ============================ -->
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-light: #ffffff;
+      --text-color: #333;
+      --primary: #b88059;
+    }
+    body {
+      margin: 0;
+      padding-top: 70px;
+      font-family: 'Open Sans', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-color);
+    }
+    h1, h2, h3, .navbar-brand { font-family: 'Playfair Display', serif; }
+    .navbar { background: var(--bg-light) !important; }
+    section { padding: 4rem 0; background: var(--bg-light); }
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      background-size: cover;
+      background-position: center;
+    }
+    .hero .overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
+    .hero-content { position: relative; z-index: 1; }
+    footer { background: var(--text-color); color: #fff; padding: 2rem 0; }
+  </style>
 </head>
 <body>
-  <h1>You're Invited!</h1>
-  <p>Join us to celebrate our big day at <strong>pragati-aadith.com</strong></p>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="#">Pragati & Aadith</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#details">Details</a></li>
+          <li class="nav-item"><a class="nav-link" href="#travel">Travel</a></li>
+          <li class="nav-item"><a class="nav-link" href="#rsvp">RSVP</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#registry">Registry</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1 class="display-3">We’re Getting Married</h1>
+      <p class="lead"></p>
+      <a href="#details" class="btn btn-lg text-white" style="background: var(--primary);">Learn More</a>
+    </div>
+  </header>
+
+  <!-- Event Details -->
+  <section id="details">
+    <div class="container">
+      <h2 class="text-center mb-4">Event Details</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card h-100 shadow-sm border-0">
+            <div class="card-body text-center">
+              <h3 class="card-title">Ceremony</h3>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100 shadow-sm border-0">
+            <div class="card-body text-center">
+              <h3 class="card-title">Reception</h3>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Travel -->
+  <section id="travel">
+    <div class="container">
+      <h2 class="text-center mb-4">Travel & Stay</h2>
+      <p class="text-center">Hotels & shuttle information below.</p>
+      <div class="ratio ratio-16x9 mt-4">
+        <iframe src="" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section id="rsvp">
+    <div class="container">
+      <h2 class="text-center mb-4">RSVP</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <form id="rsvp-form" class="needs-validation" novalidate>
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" id="name" name="name" class="form-control" required>
+              <div class="invalid-feedback">Please enter your name.</div>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" name="_replyto" class="form-control" required>
+              <div class="invalid-feedback">Please enter a valid email.</div>
+            </div>
+            <div class="mb-3">
+              <label for="attend" class="form-label">Will you attend?</label>
+              <select id="attend" name="attending" class="form-select" required>
+                <option value="">Choose...</option>
+                <option value="yes">Yes, I’ll be there</option>
+                <option value="no">Sorry, can’t make it</option>
+              </select>
+              <div class="invalid-feedback">Please select an option.</div>
+            </div>
+            <button type="submit" class="btn w-100 text-white" style="background: var(--primary);">Submit RSVP</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery">
+    <div class="container">
+      <h2 class="text-center mb-4">Gallery</h2>
+      <div id="storyCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner"></div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#storyCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span><span class="visually-hidden">Previous</span></button>
+        <button class="carousel-control-next" type="button" data-bs-target="#storyCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Registry -->
+  <section id="registry">
+    <div class="container text-center">
+      <h2 class="mb-4">Registry</h2>
+      <a id="registry-link" href="#" class="btn btn-lg btn-outline-primary">View Registry</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center">
+      <p>&copy; 2025 Pragati & Aadith</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
