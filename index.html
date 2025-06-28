@@ -122,34 +122,60 @@
       font-size: 0.95rem;
     }
 
-    /* Timeline nodes */
-    .timeline-nodes {
-      position: relative;
-      display: flex;
-      align-items: center;
-      margin: 1rem 0;
-      z-index: 1;
-    }
-    .timeline-nodes::before {
-      content: "";
-      position: absolute;
-      top: 50%; left: 0; right: 0;
-      height: 2px;
-      background: #ddd;
-      transform: translateY(-50%);
-      z-index: 0;
-    }
+.timeline-nodes {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 3rem; /* create space for line */
+  margin-top: 1rem;
+}
+.timeline-nodes::before {
+  content: "";
+  position: absolute;
+  top: 2.5rem; /* aligns with the center of .node-icon (48px height / 2) */
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #e0e0e0;
+  z-index: 0;
+}
+
+
+.node {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.node-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  margin: 0 auto 0.5rem;
+}
+
+.node--purple .node-icon {
+  background: var(--purple);
+  color: white;
+}
+
+.node--gold .node-icon {
+  background: var(--gold);
+  color: var(--text);
+}
+
+
+
     .timeline-nodes.centered { justify-content: center; gap: 4rem; }
     .timeline-nodes.spread   { justify-content: space-between; }
     .node { transition: transform 0.2s; }
     .node:hover { transform: translateY(-6px); }
-    .node-icon {
-      width: 48px; height: 48px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.25rem; margin-bottom: 0.4rem;
-    }
-    .node--purple .node-icon { background: var(--purple); color: #fff; }
-    .node--gold   .node-icon { background: var(--gold);   color: var(--text); }
+
     .node-label {
       font-size: 0.85rem; line-height: 1.2; color: var(--text);
     }
@@ -244,8 +270,7 @@
       font-size: 0.9rem;
       color: #666;
     }
-  </style>
-@media (max-width: 576px) {
+    @media (max-width: 576px) {
   body {
     background-size: contain !important;
     background-position: top center !important;
@@ -256,6 +281,8 @@
     background-position: top center !important;
   }
 }
+  </style>
+
 
 
 </head>
