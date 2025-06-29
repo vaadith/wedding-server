@@ -503,21 +503,21 @@
     }
 
     function renderGallery() {
-      const grid = document.getElementById('photoGrid');
-      grid.innerHTML = '';
-      shuffle(allPhotos);
-      allPhotos.slice(0, 8).forEach(name => {
-        const link = document.createElement('a');
-        link.href = `assets/Photos/${name}`;
-        link.setAttribute('data-lightbox', 'wedding-gallery');
-        const img = document.createElement('img');
-        img.src = `assets/Photos/${name}`;
-        img.alt = name;
-        img.loading = 'lazy';
-        link.appendChild(img);
-        grid.appendChild(link);
-      });
-    }
+  const grid = document.getElementById('photoGrid');
+  grid.innerHTML = '';
+  shuffle(allPhotos);
+  allPhotos.slice(0, 8).forEach(name => {
+    const img = document.createElement('img');
+    img.src = `assets/Photos/${name}`;
+    img.alt = name;
+    img.loading = 'lazy';
+    img.style.width = '100%';
+    img.style.borderRadius = '0.5rem';
+    img.style.marginBottom = '1rem';
+    grid.appendChild(img);
+  });
+}
+
 
     document.addEventListener('DOMContentLoaded', () => {
       renderGallery();
