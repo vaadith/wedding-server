@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wedding Travel Page</title>
+  <style>
+    body { font-family: 'Helvetica Neue', sans-serif; margin: 2rem; background: #f9f9f9; color: #333; }
+    h2 { text-align: center; color: #8a3ffc; }
+    .section { max-width: 800px; margin: 3rem auto; background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+  </style>
+</head>
+<body>
+
+  <div class="section">
+    <h2>Find Flights to Our Wedding</h2>
+    <p style="text-align: center;">Search for flights to John Wayne Airport (SNA) below. Enter your origin and travel dates to view flight options.</p>
+
+    <!-- Skyscanner Flight Search Widget for flights to John Wayne Airport (SNA) -->
+    <div data-skyscanner-widget="FlightSearchWidget"
+         data-locale="en-US" data-market="US" data-currency="USD"
+         data-destination-name="John Wayne (SNA)" data-destination-iata-code="SNA"
+         data-flight-type="return" data-target="_blank"
+         data-colour="transparent" data-font-colour="#333"
+         data-button-colour="#d97c7c" data-button-font-colour="#fff"
+         data-widget-border-radius="5" data-enable-placeholders="true">
+    </div>
+    <script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script>
+  </div>
+
+</body>
+</html>

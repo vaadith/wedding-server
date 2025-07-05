@@ -409,39 +409,20 @@
       <div id="photoGrid" class="gallery-grid"></div>
     </section>
 
-   <!-- Travel & Gifts -->
 <section id="info" class="container py-5">
   <h2 class="section-title text-center mb-5">Travel & Stay</h2>
-
   <div class="row gx-4 gy-4">
-    <!-- Directions Card -->
-    <div class="col-lg-7 col-md-12">
-      <div class="card-info">
-        <h3>Directions to Venue</h3>
-        <iframe
-          src="https://www.google.com/maps?q=12442+Tustin+Ranch+Rd,+Tustin,+CA+92782&output=embed"
-          loading="lazy"
-          style="width:100%; height:250px; border:0; border-radius:0.5rem; margin-bottom:1rem;">
-        </iframe>
-        <a
-          href="https://www.google.com/maps/dir/?api=1&destination=12442+Tustin+Ranch+Rd,+Tustin,+CA+92782"
-          class="btn-outline-purple mt-auto"
-          target="_blank"
-        >Get Directions</a>
-      </div>
-    </div>
-
-    <!-- Hotel Information -->
-    <div class="col-lg-5 col-md-12">
-      <div class="card-info">
-        <h3>Recommended Hotel</h3>
+    <!-- Hotel Card -->
+    <div class="col-lg-6 col-md-12">
+      <div class="card-info" style="border-left: 6px solid var(--gold); text-align: left;">
+        <h3 class="section-title">Recommended Hotel</h3>
         <p><strong>Sonesta Irvine</strong><br>
           17941 Von Karman Avenue<br>
           Irvine, CA 92614
         </p>
         <p>
-          We've reserved a room block at the Sonesta Irvine for your convenience.<br>
-          Mention the <strong>"Pragati & Aadith Wedding"</strong> to access the special rate.
+          We've reserved a room block at the Sonesta Irvine.<br>
+          Mention the <strong>"Pragati & Aadith Wedding"</strong> for a special rate.
         </p>
         <p><strong>Rate:</strong> $159 per night</p>
         <p>
@@ -453,8 +434,73 @@
       </div>
     </div>
 
+    <!-- Directions Card -->
+    <div class="col-lg-6 col-md-12">
+      <div class="card-info" style="border-left: 6px solid var(--gold); text-align: left;">
+        <h3 class="section-title">Venue Directions</h3>
+        <iframe
+          src="https://www.google.com/maps?q=12442+Tustin+Ranch+Rd,+Tustin,+CA+92782&output=embed"
+          loading="lazy"
+          style="width:100%; height:250px; border:0; border-radius:0.5rem; margin-bottom:1rem;">
+        </iframe>
+        <a
+          href="https://www.google.com/maps/dir/?api=1&destination=12442+Tustin+Ranch+Rd,+Tustin,+CA+92782"
+          class="btn btn-outline-dark w-100"
+          target="_blank"
+        >Open in Google Maps</a>
+      </div>
+    </div>
+
+    <!-- Flight Search Widget Row -->
+    <div class="col-12">
+      <div class="card-info" style="border-left: 6px solid var(--gold); text-align: left;">
+        <h3 class="section-title">Flights to John Wayne Airport (SNA)</h3>
+        <p>Closest airport to venue is Santa Ana John Wayne airport (SNA)</p>
+
+        <!-- Skyscanner Widget -->
+<div data-skyscanner-widget="FlightSearchWidget"
+     data-locale="en-US"
+     data-market="US"
+     data-currency="USD"
+     data-destination-name="John Wayne (SNA)"
+     data-destination-iata-code="SNA"
+     data-flight-type="return"
+     data-flight-outbound-date="2025-10-10"
+     data-flight-inbound-date="2025-10-12"
+     data-target="_blank"
+     data-colour="transparent"
+     data-font-colour="#333"
+     data-button-colour="#d97c7c"
+     data-button-font-colour="#fff"
+     data-widget-border-radius="5"
+     data-enable-placeholders="true">
+</div>
+<script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script>
+
+<!-- Alternative Flight Options -->
+<div class="mt-1 row g-3">
+  <div class="col-md-6">
+    <a class="btn btn-outline-dark w-100"
+       href="https://www.google.com/travel/flights?q=flights%20to%20SNA%20on%202025-10-10%20returning%202025-10-12"
+       target="_blank">
+      Google Flights
+    </a>
+  </div>
+  <div class="col-md-6">
+    <a class="btn btn-outline-dark w-100"
+       href="https://www.kayak.com/flights/SNA/2025-10-10/2025-10-12"
+       target="_blank">
+      Kayak
+    </a>
+  </div>
+</div>
+
+
+      </div>
+    </div>
+
     <!-- No Gifts Section -->
-    <div class="col-12 mt-4">
+    <div class="col-12">
       <div style="
         background: rgba(255,255,255,0.9);
         border-top: 2px solid var(--purple);
@@ -478,6 +524,7 @@
     </div>
   </div>
 </section>
+
     <footer>
       <p>&copy; 2025 Pragati &amp; Aadith</p>
     </footer>
